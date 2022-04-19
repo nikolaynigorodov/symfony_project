@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'posts_title'|trans }} : {{ user.username }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+        <div class="col mt-4 mb-4">
+            <a href="{{ path('post_post_all_show') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+            {% if is_granted('post_link_create') %}
+                <a href="{{ path('post_post_create') }}" class="btn btn-outline-secondary btn-lg square" role="button">{{ 'post_create'|trans }}</a>
+            {% endif %}
+        </div>
+    </div>
+        <div class="row py-5 px-4">
+            <div class="col-md-5 mx-auto">
+                <!-- Profile widget -->
+                <div class="bg-white shadow rounded overflow-hidden">
+                    <div class="px-4 pt-0 pb-4 cover">
+                        <div class="media align-items-end profile-head">
+                            <div class="profile mr-3">
+                                {% if user.avatar %}
+                                    <img class="img-thumbnail" src="{{ asset('avatar/' ~ user.avatar) }}" alt="avatar">
+                                {% else %}
+                                    <img src="{{ asset('default_avatar.png') }}" alt="..." class="rounded mb-2 img-thumbnail">
+                                {% endif %}
+                                {% if is_granted('user_profile_edit', user) %}
+                                    <a href="{{ path('user_user_profile_edit') }}" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+                                {% endif %}
+                            </div>
+                            <div class="media-body mb-5 text-black">
+                                <h4 class="mt-0 mb-0">{{ user.username }}</h4>
+                                <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>{{ user.firstName }}</p>
+                                <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>{{ user.lastName }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-light p-4 d-flex justify-content-end text-center">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% if data.items %}
+        {% for item in data %}
+            <div class="card mt-2">
+                <div class="card-body">
+                    <i class="fas fa-heart float-right custom-fa-heart"></i>
+                    <span class="post-show-count-likes float-right">{{ item.getPostLikes().count() }}</span>
+                    {% if item.getCategory() %}
+                        <h5 class=""><span>{{ 'menu.categories_title'|trans }}</span> : <a href="{{ path('post_category_show', {id: item.getCategory().getId()}) }}">{{ item.getCategory().getTitle() }}</a></h5>
+                    {% endif %}
+                    {% if item.image %}
+                        <img src="{{ asset('post/image/' ~ item.image) }}" class="rounded-circle float-right" alt="{{ item.getTitle() }}">
+                    {% endif %}
+                    <h3 class="card-title"><a href="{{ path('post_post_show', {id: item.getId()}) }}">{{ item.getTitle() }}</a></h3>
+                    <p class="card-text">{{ item.getSummary() }}</p>
+                    <hr>
+                    {% for tag in item.getTags() %}
+                        <a href="{{ path('post_post_tag_show', {id: tag.id}) }}">{{ tag.title }} </a>
+                    {% endfor %}
+                    <hr>
+                    <a href="{{ path('post_post_show', {id: item.getId()}) }}" class="btn btn-primary">{{ 'post_show_more'|trans }}</a>
+                    {% if is_granted('edit', item) %}
+                        <a href="{{ path('post_post_edit', {id: item.getId()}) }}" class="btn btn-info square" role="button">{{ 'post_edit'|trans }}</a>
+                        <a href="{{ path('post_post_delete', {id: item.getId()}) }}" class="btn btn-danger square" role="button">{{ 'post.delete_button'|trans }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <h3>{{ 'posts.not_found'|trans }}</h3>
+        </div>
+
+    </div>
+
+    {% endif %}
+    <div class="container">
+        <div class="col-sm-12 mt-4">
+            <div class="row justify-content-center">
+                {{ knp_pagination_render(data) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

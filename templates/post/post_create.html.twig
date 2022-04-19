@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'post_create'|trans }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('post_post_all_show') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+            </div>
+        </div>
+
+        {{ form_start(post_create)}}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(post_create) }}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(post_create.title) }}
+                {{ form_errors(post_create.title) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_create.summary) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_create.content) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_create.category) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_create.imageFile) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_create.tags) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_create.publishingDate) }}
+            </div>
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        {{ form_row(post_create.save) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_row(post_create.saveDraft) }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {{ form_end(post_create) }}
+    </div>
+{% endblock %}

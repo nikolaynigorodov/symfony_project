@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'welcome'|trans }}, {{ user.username }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row py-5 px-4">
+            <div class="col-md-5 mx-auto">
+                <!-- Profile widget -->
+                <div class="bg-white shadow rounded overflow-hidden">
+                    <div class="px-4 pt-0 pb-4 cover">
+                        <div class="media align-items-end profile-head">
+                            <div class="profile mr-3">
+                                {% if user.avatar %}
+                                    <img class="img-thumbnail" src="{{ asset('avatar/' ~ user.avatar) }}" alt="avatar">
+                                {% else %}
+                                    <img src="{{ asset('default_avatar.png') }}" alt="..." class="rounded mb-2 img-thumbnail">
+                                {% endif %}
+                                <a href="{{ path('user_user_profile_edit') }}" class="btn btn-outline-dark btn-sm btn-block">{{ 'user.information.menu_edit_profile_title'|trans }}</a>
+                                <a href="{{ path('user_token_confirm_user_email_reset') }}" class="btn btn-outline-dark btn-sm btn-block">{{ 'user.information.menu_change_email_title'|trans }}</a>
+                                <a href="{{ path('user_post_post_export') }}" class="btn btn-outline-dark btn-sm btn-block">{{ 'user.information.menu_export_post_title'|trans }}</a>
+                                <a href="{{ path('user_post_post_import') }}" class="btn btn-outline-dark btn-sm btn-block">{{ 'user.information.menu_import_post_title'|trans }}</a>
+                                <a href="{{ path('user_post_post_import_view_report') }}" class="btn btn-outline-dark btn-sm btn-block">{{ 'user.information.menu_import_post_reports_title'|trans }}</a>
+                                {% if (user.getSubscription()) %}
+                                    <a href="{{ path('user_subscription_subscription_profile') }}" class="btn btn-outline-danger btn-sm btn-block">{{ 'user.information.menu_delete_subscribe_title'|trans }}</a>
+                                {% else %}
+                                    <a href="{{ path('user_subscription_subscription_profile') }}" class="btn btn-outline-info btn-sm btn-block">{{ 'user.information.menu_subscribe_title'|trans }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="media-body mb-5 text-black">
+                            <h4 class="mt-0 mb-0 ">{{ user.username }}</h4>
+                            <p class="small mb-2"> {{ user.firstName }}</p>
+                            <p class="small mb-2"> {{ user.lastName }}</p>
+                        </div>
+                    </div>
+                    <div class="bg-light p-4 d-flex">
+                        {% if user.getSubscriptionPayCheck and user.getSubscriptionPay %}
+                            <div>
+                                <p>Subscription Type: {{ 'user_information.subscription_type_paid'|trans }}</p>
+                                <p>Status: {{ 'user_information.subscription_status_active'|trans }}</p>
+                                <p>Start At: {{ user.getSubscriptionPay.getStart|date }}</p>
+                                <p>Next Payment At: {{ user.getSubscriptionPay.getFinish|date }}</p>
+                            </div>
+
+                        {% else %}
+                            <div>
+                                <p>Subscription Type: {{ 'user_information.subscription_type_free'|trans }}</p>
+                                <p>Status: {{ 'user_information.subscription_status_schedule_cancel'|trans }}</p>
+                                {% if user.getSubscriptionPay %}
+                                    <p>Start At: {{ user.getSubscriptionPay.getStart|date }}</p>
+                                    <p>Next Payment At: {{ user.getSubscriptionPay.getFinish|date }}</p>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {#<ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <h5 class="font-weight-bold mb-0 d-block">0</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i></small>
+                            </li>
+                        </ul>#}
+                    </div>
+                    {#<div class="px-4 py-3">
+                        <h5 class="mb-0">About</h5>
+                        <div class="p-4 rounded shadow-sm bg-light">
+                            <p class="font-italic mb-0">Web Developer</p>
+                        </div>
+                    </div>#}
+                    <div class="py-4 px-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="mb-0">{{ 'posts'|trans }}</h5><a href="{{ path('user_post_user_posts') }}" class="btn btn-link text-muted">{{ 'show.all'|trans }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#<h1>
+            Welcome, {{ user.username }}
+        </h1>#}
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        bind:
+          $timeToEndConfirm: "%env(USER_TOKEN_TIME_TO_END_CONFIRM)%"
+          $postImportDirectory: "%env(POST_IMPORT_DIRECTORY)%"
+          $emailFrom: 'future@gmail.com'
+          $hostSite: 'http://future-blog.loc'
+          $pathToImage: '/post/image/'
+          $pathToImportFolder: 'public/import/'
+
+    Future\Blog\User\Controller\:
+        resource: '../../src/User/Controller'
+        public: false
+
+    Future\Blog\User\Security\:
+        resource: '../../src/User/Security'
+        public: false
+
+    Future\Blog\User\Repository\:
+        resource: '../../src/User/Repository'
+        public: false
+
+    Future\Blog\User\Validator\Constraints\:
+        resource: '../../src/User/Validator/Constraints'
+        public: false
+
+    Future\Blog\User\UserManager\:
+        resource: '../../src/User/UserManager'
+        public: false
+
+    Future\Blog\User\Command\:
+        resource: '../../src/User/Command'
+        public: false
+
+    Future\Blog\User\PostExport\PostExport: ~
+    Future\Blog\User\PostExportHandler\PostExportHandler: ~
+    Future\Blog\User\PostImportHandler\PostImportHandler: ~
+    Future\Blog\User\Mapper\UserPostsExportMapper: ~
+    Future\Blog\User\Mapper\UserPostsImportMapper: ~
+    # Future\Blog\User\UserManager: ~
+    # Future\Blog\Core\ServiceName: ~

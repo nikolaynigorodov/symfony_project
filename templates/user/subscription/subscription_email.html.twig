@@ -1,0 +1,7 @@
+<h2>New posts!</h2>
+
+{% for post in data %}
+    <p>
+        <a href="{{ absolute_url(path('post_post_show', { 'id': post.getId() })) }}">{{ post.getTitle() }}</a>
+    </p>
+{% endfor %}

@@ -1,0 +1,12 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Future\Blog\Common\DataFixtures\:
+        resource: '../../src/Common/DataFixtures'
+        public: true
+
+    # Future\Blog\Core\ServiceName: ~

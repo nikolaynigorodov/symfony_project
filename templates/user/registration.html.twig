@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'registration_title'|trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal">Registration</h1>
+
+        {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.email) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(form.firstName) }}
+                {{ form_errors(form.firstName) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(form.lastName) }}
+                {{ form_errors(form.lastName) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(form.plainPassword) }}
+                {{ form_errors(form.plainPassword) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

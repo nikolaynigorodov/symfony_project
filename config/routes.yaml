@@ -1,0 +1,169 @@
+post_post_all_show:
+  path: /
+  controller: Future\Blog\Post\Controller\PostAllShowController
+  methods: GET|HEAD
+
+user_user_information:
+  path: /user
+  controller: Future\Blog\User\Controller\UserInformationController
+  methods: GET
+
+user_user_registration:
+  path: /registration
+  controller: Future\Blog\User\Controller\UserRegistrationController
+  methods: GET|POST
+
+post_post_create:
+  path: /post/create
+  controller: Future\Blog\Post\Controller\PostCreateController
+  methods: GET|POST
+
+post_post_show:
+  path: /post/{id}
+  controller: Future\Blog\Post\Controller\PostShowController
+  methods: GET|HEAD|POST
+  requirements:
+    id: '\d+'
+
+post_post_edit:
+  path: /post/edit/{id}
+  controller: Future\Blog\Post\Controller\PostEditController
+  methods: GET|POST
+  requirements:
+    id: '\d+'
+
+post_post_delete:
+  path: /posts/{id}/delete
+  controller: Future\Blog\Post\Controller\PostDeleteController
+  methods: POST|GET
+
+post_post_search:
+  path: /search
+  controller: Future\Blog\Post\Controller\PostSearchController
+  methods: GET
+
+user_post_user_posts:
+  path: /profile/posts
+  controller: Future\Blog\User\Controller\UserPostsController
+  methods: GET
+
+post_post_likes_ajax:
+  path: /post/likes/{id}
+  controller: Future\Blog\Post\Controller\PostPostLikesAjaxController
+  methods: POST
+
+user_user_profile_edit:
+  path: /profile/edit
+  controller: Future\Blog\User\Controller\ProfileEditController
+  methods: GET|POST
+
+user_subscription_subscription_profile:
+  path: /profile/subscriptions
+  controller: Future\Blog\User\Controller\SubscriptionProfileController
+  methods: GET|POST
+
+user_post_post_export:
+  path: /profile/posts-export
+  controller: Future\Blog\User\Controller\Export\UserPostsExportController
+  methods: GET|POST
+
+user_post_post_import:
+  path: /profile/posts-import
+  controller: Future\Blog\User\Controller\Import\UserPostsImportController
+  methods: GET|POST
+
+user_post_post_import_view_report:
+  path: /profile/posts-import-report
+  controller: Future\Blog\User\Controller\Import\UserPostsImportAllReportsController
+  methods: GET
+
+user_post_post_import_token:
+  path: /profile/posts-import/{token}
+  controller: Future\Blog\User\Controller\UserPostsImportReportController
+  methods: GET
+
+post_user_posts_profile:
+  path: /profile/{id}
+  controller: Future\Blog\Post\Controller\PostsProfileController
+  methods: GET
+
+post_category_show:
+  path: /category/{id}
+  controller: Future\Blog\Post\Controller\CategoryShowPostController
+  methods: GET|HEAD
+  requirements:
+    id: '\d+'
+
+post_post_tag_show:
+  path: /tag/{id}
+  controller: Future\Blog\Post\Controller\TagShowPostController
+  methods: GET|HEAD
+  requirements:
+    id: '\d+'
+
+core_contact_create:
+  path: /contact
+  controller: Future\Blog\Core\Controller\ContactCreateController
+  methods: GET|POST
+
+admin_dashboard:
+  path: /admin
+  controller: Future\Blog\Admin\Controller\DashboardController::index
+  methods: GET|POST
+
+admin_contact_reply_message:
+  path: /admin/reply/{id}
+  controller: Future\Blog\Admin\Controller\ReplyMessageController
+  methods: GET|POST
+  requirements:
+    id: '\d+'
+
+user_token_confirm_user_registration_confirm:
+  path: /registration/confirm/{token}
+  controller: Future\Blog\User\Controller\UserRegistrationConfirmController
+  methods: GET
+
+user_token_confirm_user_password_reset:
+  path: /password/reset
+  controller: Future\Blog\User\Controller\UserPasswordResetStartController
+  methods: GET|POST
+
+user_token_confirm_user_password_reset_confirm:
+  path: /password/reset/{token}
+  controller: Future\Blog\User\Controller\UserPasswordResetConfirmController
+  methods: GET|POST
+
+user_token_confirm_user_email_reset:
+  path: /email/reset
+  controller: Future\Blog\User\Controller\UserEmailResetStartController
+  methods: GET|POST
+
+user_token_confirm_user_email_reset_confirm:
+  path: /email/reset/{token}
+  controller: Future\Blog\User\Controller\UserEmailResetConfirmController
+  methods: GET|POST
+
+stripe_start:
+  path: /stripe
+  controller: Future\Blog\Stripe\Controller\StripePayStartController
+  methods: GET
+
+stripe_create_checkout_session:
+  path: /stripe/checkout
+  controller: Future\Blog\Stripe\Controller\StripePayCreateCheckoutSessionController
+  methods: POST
+
+stripe_success_url:
+  path: /stripe/success
+  controller: Future\Blog\Stripe\Controller\StripePaySuccessController
+  methods: GET
+
+stripe_cancel_url:
+  path: /stripe/cancel
+  controller: Future\Blog\Stripe\Controller\StripePayCancelController
+  methods: GET
+
+stripe_webhooks:
+  path: /stripe/webhooks
+  controller: Future\Blog\Stripe\Controller\StripeWebhooksController
+  methods: POST

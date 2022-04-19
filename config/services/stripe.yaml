@@ -1,0 +1,24 @@
+parameters:
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    bind:
+      $stripeSk: "%env(STRIPE_SK)%"
+      $endPointSecret: "%env(END_POINT_SECRET)%"
+      $lookupKey: "%env(STRIPE_LOOKUP_KEY)%"
+
+  Future\Blog\Stripe\Controller\:
+    resource: '../../src/Stripe/Controller'
+    public: true
+
+  Future\Blog\Stripe\Repository\:
+    resource: '../../src/Stripe/Repository'
+    public: true
+
+  Future\Blog\Stripe\Manager\:
+    resource: '../../src/Stripe/Manager'
+    public: false
+
+  # Future\Blog\Core\ServiceName: ~

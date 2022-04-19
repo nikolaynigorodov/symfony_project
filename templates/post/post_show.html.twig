@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'post_title'|trans }} : {{ post.getTitle() }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('post_post_all_show') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+                {% if is_granted('post_link_create') %}
+                    <a href="{{ path('post_post_create') }}" class="btn btn-outline-secondary btn-lg square" role="button">{{ 'post_create'|trans }}</a>
+                {% endif %}
+                {% if is_granted('edit', post) %}
+                    <a href="{{ path('post_post_edit', {id: post.getId()}) }}" class="btn btn-info btn-lg square" role="button">{{ 'post_edit'|trans }}</a>
+                {% endif %}
+            </div>
+
+        </div>
+        {% if post.getCategory() %}
+            <h5 class=""><span>{{ 'menu.categories_title'|trans }}</span> : <a href="{{ path('post_category_show', {id: post.getCategory().getId()}) }}">{{ post.getCategory().getTitle() }}</a></h5>
+        {% endif %}
+
+        {% if post.image %}
+            <img src="{{ asset('post/image/' ~ post.image) }}" class="rounded mx-auto d-block" alt="{{ post.getTitle() }}">
+        {% endif %}
+        <h1 style="text-align: center">{{ post.getTitle() }}</h1>
+        <div>
+            {{ post.getSummary() }}
+        </div>
+        <div>
+            {{ post.getContent() | raw }}
+        </div>
+        <div>
+            {% for tag in post.getTags() %}
+                <a href="{{ path('post_post_tag_show', {id: tag.id}) }}">{{ tag.title }} </a>
+            {% endfor %}
+        </div>
+        {% if is_granted('ROLE_USER') %}
+            <div class="mt-4 mb-2">
+                {{ form_start(form_comment_create) }}
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ form_row(form_comment_create.message) }}
+                        {{ form_errors(form_comment_create.message) }}
+                    </div>
+                </div>
+                {{ form_end(form_comment_create) }}
+            </div>
+        {% endif %}
+        <div class="container">
+            <div class="row">
+                Likes: <span id="post-likes">{{ likes }}</span>
+            </div>
+            {% if is_granted('ROLE_USER') and app.user.id != post.getOwner().getId()%}
+                <div class="row">
+                    <a href="#" class="btn {{ checkUserLikes ? 'btn-danger' : 'btn-info' }}  btn-sm square" role="button" data-post="{{ post.getId() }}" id="addPostLikes">
+                        {{ checkUserLikes ? 'post_show_title_delete_like'|trans : 'post_show_title_add_like'|trans }}</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="container mt-3">
+            {% for comment in comments %}
+                <div class="row mt-2 mb-2">
+                    <div class="col-12">
+                        <div class="card card-white post">
+                            <div class="post-heading">
+                                <div class="float-right image">
+                                    {% if comment.getAuthor().getAvatar() %}
+                                        <img class="img-thumbnail mr-2 post-comment-user-image" src="{{ asset('avatar/' ~ comment.getAuthor().getAvatar()) }}" alt="avatar">
+                                    {% endif %}
+                                </div>
+                                <div class="float-left meta">
+                                    <div class="title h5">
+                                        <p><a href="{{ path('post_user_posts_profile', {id: comment.getAuthor().getId()}) }}">{{ comment.getAuthor().getFirstName() }}, {{ comment.getAuthor().getLastName() }}</a></p>
+                                        made a post:
+                                    </div>
+                                    <h6 class="text-muted time">{{ comment.getCreatedAt()|date("m/d/Y H:i:s") }}</h6>
+                                </div>
+                            </div>
+                            <div class="post-description">
+                                <p>{{ comment.getMessage() }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/post_add_likes.js') }}"></script>
+{% endblock %}

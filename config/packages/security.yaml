@@ -1,0 +1,66 @@
+security:
+    # https://symfony.com/doc/current/security/experimental_authenticators.html
+    enable_authenticator_manager: true
+    password_hashers:
+        Future\Blog\Core\Entity\User:
+            algorithm: auto
+        Future\Blog\User\Entity\Admin:
+            algorithm: auto
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: Future\Blog\Core\Entity\User
+                property: email
+        app_admin_provider:
+            entity:
+                class: Future\Blog\User\Entity\Admin
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin:
+            pattern: ^/admin
+            lazy: true
+            provider: app_admin_provider
+            custom_authenticator: Future\Blog\User\Security\AdminAuthenticator
+            entry_point: Future\Blog\User\Security\AdminAuthenticator
+            form_login:
+                login_path: app_admin_login
+                check_path: app_admin_login
+            logout:
+                path: app_admin_logout
+                # where to redirect after logout
+                # target: app_any_route
+        main:
+            pattern: ^/
+            user_checker: Future\Blog\User\Security\UserChecker
+            provider: app_user_provider
+            custom_authenticator: Future\Blog\User\Security\LoginAuthenticator
+            entry_point: Future\Blog\User\Security\LoginAuthenticator
+            form_login:
+                login_path: app_login
+                check_path: app_login
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/user, roles: ROLE_USER }
+        #- { path: ^/admin/login/, role: IS_AUTHENTICATED_ANONYMOUSLY && !IS_AUTHENTICATED_FULLY }
+        - { path: ^/admin/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/profile, roles: ROLE_USER }

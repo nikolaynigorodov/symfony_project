@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'post_delete_title'|trans }} : {{ post.getTitle() }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('post_post_all_show') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+            </div>
+        </div>
+
+        {{ form_start(post_delete)}}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(post_delete) }}
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(post_delete.yes) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(post_delete.no) }}
+            </div>
+        </div>
+
+        {{ form_end(post_delete) }}
+
+        {#{{ form(show_form) }}#}
+    </div>
+{% endblock %}

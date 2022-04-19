@@ -1,0 +1,52 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Future\Blog\User\Repository;
+
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Future\Blog\User\Entity\ImportReport;
+
+/**
+ * @method ImportReport|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ImportReport|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ImportReport[]    findAll()
+ * @method ImportReport[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class ImportReportRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, ImportReport::class);
+    }
+
+    // /**
+    //  * @return ImportReport[] Returns an array of ImportReport objects
+    //  */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('i.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
+
+    /*
+    public function findOneBySomeField($value): ?ImportReport
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
+}

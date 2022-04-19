@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'posts_title_import_view_report'|trans }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('user_user_information') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+                {% if is_granted('post_link_create') %}
+                    <a href="{{ path('post_post_create') }}" class="btn btn-outline-secondary btn-lg square" role="button">{{ 'post_create'|trans }}</a>
+                {% endif %}
+            </div>
+        </div>
+        <h2 class="text-center">{{ 'posts_title_import_view_report'|trans }}</h2>
+        {% if importReports|length > 0 %}
+            <div class="row col-md-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Link</th>
+                        <th scope="col">Date Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for report in importReports %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('user_post_post_import_token', {token: report.getToken()}) }}" class="badge badge-primary" role="button">{{ report.getToken() }}</a>
+                            </td>
+                            <td>{{ report.getCreatedAt()|date("Y-m-d H:i:s") }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center"><b>{{ 'posts_import_view_report_no_reports'|trans }}</b></p>
+        {% endif %}
+    </div>
+{% endblock %}

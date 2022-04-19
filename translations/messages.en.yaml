@@ -1,0 +1,141 @@
+welcome: Welcome
+show.all: Show All
+
+menu.posts: Posts
+menu.post.create: Create Post
+menu.profile: Profile
+menu.posts_my: My Posts List
+menu.profile_edit: Edit Profile
+menu.login: Login
+menu.logout: Log Out
+menu.registration: Registration
+menu.categories_title: Category
+menu.contact: Contact
+menu.subscription_pay: Subscription Pay
+subscription_title: Subscription on Category
+user.information.menu_edit_profile_title: Edit profile
+user.information.menu_change_email_title: Change Email
+user.information.menu_export_post_title: Export Posts
+user.information.menu_import_post_title: Import Posts
+user.information.menu_import_post_reports_title: Import Posts Reports
+user.information.menu_subscribe_title: Subscribe to categories
+user.information.menu_delete_subscribe_title: Unsubscribe to categories
+
+post_title: Post
+posts_title: Posts
+admin_title_reply_message: Reply Message
+post_create: Create Post
+posts_search: Search by Posts
+posts.not_found: Posts not found!!!
+post_edit: Post Edit
+post_delete_title: Post Delete
+post.delete_button: Delete
+import_report_title: Import Report
+posts_title_import_view_report: All import reports
+
+profile_edit_title: Edit Profile
+
+contact_create_title: Contact
+
+user_information.subscription_type_paid: Paid
+user_information.subscription_type_free: Free
+user_information.subscription_status_active: Active
+user_information.subscription_status_schedule_cancel: Schedule_cancel
+
+registration_title: Registration on Site Future Blog
+registered.success: You have successfully Registered on the site. Log in to your mailbox to confirm registration
+post.create.success: Post was added successfully!!!
+post.create.need_subscription_pay: To be able to create posts, you need a subscription !!!
+post.update.success: Post Update!
+post.delete_success: Post Delete!
+post.search.messages: Found count results for your search
+search_post_not_found: The search has not given any results
+profile.update.success: Profile has been successfully upgraded
+subscribe.save.success: You have successfully subscribed to posts
+subscribe.delete.success: You have successfully delete subscribed
+contact.create.success: You have successfully sent your message. We will answer you.
+admin.reply_message_success: You have successfully replied to the letter!
+post.create_comment_message: Your comment is being reviewed.
+confirm.registered.message_success: Log in to your account.
+confirm.password_reset.message_success: You have successfully changed your password, please sign in to your account.
+confirm.email_reset.message_success: You have successfully changed your Email, please sign in to your account.
+confirm.password_reset.message_error: Failed to update password !!!
+confirm.email_reset.message_error: Failed to update Email !!!
+confirm.user.posts.export: An email has been sent to you with a link to the export file.
+confirm.user.posts.import: An email has been sent to you with a link to the import file.
+posts_import_view_report_no_reports: There are no import reports.
+import_report_without_errors: Import went without errors.
+
+user_password_reset_message_success: An email has been sent to you, follow the link to change your password.
+user_email_reset_message_success: An email has been sent to you, follow the link to change your Email.
+
+contact.create.spam.message_error: This is spam !!!
+user_checker.message: Your user account no longer exists.
+post.import.photo_message_error: It is impossible to copy a picture from the URL, check the path to the picture.
+
+return_main_page: Return Main Page
+post_show_more: Show more...
+post_show_title_add_like: Add like
+post_show_title_delete_like: Delete like
+
+form.delete: Delete
+form.registration.first_name: First Name
+form.registration.last_name: Last Name
+form.registration.email: Email
+form.registration.password: Password
+form.registration.repeat_password: Repeat Password
+form.registration.submit_registration: Registration
+form.create_post.title: Title
+form.create_post.status: Status
+form.create_post.summary: Summary
+form.create_post.content: Content
+form.create_post.tags: Tags
+form.create_post.create: Save
+form.create_post.draft: Save as Draft
+form.create_post.archive: Save to Archive
+form.edit.update: Update
+form.edit.profile.first_name: First Name
+form.edit.profile.last_name: Last Name
+form.edit.profile.submit_update: Update Profile
+form.delete_yes: Yse
+form.delete_no: No
+form.search.placeholder: Search for word/pharase in the title and summary
+form.search.button: Search
+form.search_post_status.status_title: Statuses for Posts
+form.search_post_status.submit_name: Search
+
+form.admin.reply_contact.email: Email
+form.admin.reply_contact.message: Message
+form.admin.reply_contact.submit: Submit
+
+form.comment.create.message_text: Comment
+form.comment.create.button: Add Comment
+
+form.contact.name: Name
+form.contact.email: Email
+form.contact.message: Text
+form.contact.submit: Submit
+
+form.create.subscription_category: Category
+form.create.subscription_button: Subscriptions
+form.user_post_export.category: Category
+form.user_post_export.status: Status
+form.user_post_export.button: Export
+form.user_post_import.status: Status
+form.user_post_import.import_file_placeholder: Select file import
+form.user_post_import.button: Import
+
+form.password.reset_email: Email
+form.password.reset_send: Send
+
+post.edit.image.placeholder: Select image for Post
+
+confirm_email_text_letter: To confirm registration, follow the link.
+
+link_title_to_change_password: Change Password
+
+stripe_title_start: Payment Stripe
+stripe_title_success: Success Pay on Subscription
+stripe_title_cancel: Cancel Pay
+
+admin.posts.crud.update_post_blocked: Post status updated to blocked.

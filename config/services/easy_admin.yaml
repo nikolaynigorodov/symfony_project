@@ -1,0 +1,12 @@
+parameters:
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Future\Blog\Admin\Controller\:
+    resource: '../../src/Admin/Controller'
+    public: true
+
+  # Future\Blog\Core\ServiceName: ~

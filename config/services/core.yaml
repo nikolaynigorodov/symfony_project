@@ -1,0 +1,39 @@
+parameters:
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Future\Blog\Core\Controller\:
+    resource: '../../src/Core/Controller'
+    public: true
+
+  Future\Blog\Core\Repository\:
+    resource: '../../src/Core/Repository'
+    public: true
+
+  Future\Blog\Core\Manager\:
+    resource: '../../src/Core/Manager'
+    public: false
+
+  Future\Blog\Core\Mapper\:
+    resource: '../../src/Core/Mapper'
+    public: false
+
+  Future\Blog\Core\FileUploader\:
+    resource: '../../src/Core/FileUploader'
+    public: true
+    arguments:
+      $targetDirectory: '%public_avatar%'
+      $imageDirectory: '%public_post_image%'
+
+  Future\Blog\Core\SpamChecker\:
+    resource: '../../src/Core/SpamChecker'
+    public: true
+    arguments:
+      $akismetKey: "%env(AKISMET_KEY)%"
+
+
+  Future\Blog\Core\Form\ContactCreateForUserType: ~
+  # Future\Blog\Core\ServiceName: ~

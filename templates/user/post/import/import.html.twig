@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'posts_title_export'|trans }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('post_post_all_show') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+                {% if is_granted('post_link_create') %}
+                    <a href="{{ path('post_post_create') }}" class="btn btn-outline-secondary btn-lg square" role="button">{{ 'post_create'|trans }}</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="mt-4 mb-2">
+            {{ form_start(form) }}
+            <div class="my-custom-class-for-errors">
+                {{ form_errors(form) }}
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_row(form.status) }}
+                </div>
+                <div class="col-md-12">
+                    {{ form_row(form.importFile) }}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

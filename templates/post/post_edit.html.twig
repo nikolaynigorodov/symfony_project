@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'post_edit'|trans }} : {{ post.getTitle() }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('post_post_all_show') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+            </div>
+        </div>
+
+        {{ form_start(post_edit)}}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(post_edit) }}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(post_edit.title) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_edit.summary) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_edit.content) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_edit.category) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_edit.imageFile) }}
+            </div>
+            <div class="col-sm-3 mt-2 mb-2">
+                {% if post_edit.vars.data.viewImage|default %}
+                    <img src="{{ asset('post/image/' ~ post_edit.vars.data.viewImage) }}" class="rounded img-thumbnail">
+                {% endif %}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_edit.tags) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_edit.status) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(post_edit.publishingDate) }}
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group row">
+                <div class="col-md-4">
+                    {{ form_row(post_edit.update) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(post_edit.saveDraft) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(post_edit.saveArchive) }}
+                </div>
+            </div>
+        </div>
+
+        {{ form_end(post_edit) }}
+    </div>
+{% endblock %}

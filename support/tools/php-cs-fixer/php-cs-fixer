@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -eu
+
+main() {
+    local tool="php-cs-fixer"
+    local tool_path="$(cd "$(dirname "$0")" && pwd)"
+    local root_path="$(cd "$tool_path/../../.." && pwd)"
+    local vendor_path="$tool_path/vendor"
+    local bin_path="$vendor_path/bin/$tool"
+
+    if [ ! -e "$bin_path" -o "$vendor_path" -ot "$tool_path/composer.json" -o "$vendor_path" -ot "$tool_path/composer.lock" ]; then
+        (cd "$tool_path"; "$root_path/bin/composer" install; touch "$vendor_path") >/dev/null 2>&1
+    fi
+
+    exec "$bin_path" "$@"
+}
+
+main "$@"

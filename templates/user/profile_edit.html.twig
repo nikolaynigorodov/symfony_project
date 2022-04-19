@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'profile_edit_title'|trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1 class="h3 mb-3 font-weight-normal">{{ 'profile_edit_title'|trans }}</h1>
+
+        {{ form_start(form) }}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.firstName) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(form.lastName) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(form.avatarFile) }}
+            </div>
+        </div>
+        <div class="col-sm-3 mt-2 mb-2">
+            {% if form.vars.data.viewAvatar|default %}
+                <img src="{{ asset('avatar/' ~ form.vars.data.viewAvatar) }}" class="rounded img-thumbnail">
+            {% endif %}
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('js/profile_user_edit_avatar.js') }}"></script>
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+post.max:
+  title: Title cannot be longer than {{ limit }} characters
+  summary: Summary cannot be longer than {{ limit }} characters
+  content: Content cannot be longer than {{ limit }} characters
+
+user.edit.avatar.image_size: Picture size no more 4Mb
+user.edit.avatar.image_height: Maximum Height 400px
+user.edit.avatar.image_width: Maximum Width 400px
+user.edit.avatar.image_type: Image only jpeg, png
+
+user.post.import.image_size: Import file size no more 1Mb
+user.post.import.import_type: Import file only csv
+
+post.edit.image_size: Picture size no more 4Mb
+post.edit.image_height: Maximum Height 400px
+post.edit.image_width: Maximum Width 400px
+post.edit.image_type: Image only jpeg, png
+
+post.edit.tags_message: You entered incorrect tags

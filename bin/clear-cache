@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -eu
+. "$(dirname $0)/.shrc"
+
+
+echo "Clearing cache for '$APP_ENV' env"
+cache_path="$CACHE_DIR/$APP_ENV"
+
+if [ -e "$cache_path" ]; then
+    echo "rm -rf \"$cache_path\""
+    rm -rf "$cache_path"
+else
+    echo "WARN: Cache dir '$cache_path' is missing"
+fi

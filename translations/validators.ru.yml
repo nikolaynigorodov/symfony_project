@@ -1,0 +1,19 @@
+post.max:
+  title: Название не может быть длиннее {{ limit }} симвлов
+  summary: Резюме не может быть длиннее {{ limit }} симвлов
+  content: Контент не может быть длиннее {{ limit }} симвлов
+
+user.edit.avatar.image_size: Размер картинки не больше 4Mb
+user.edit.avatar.image_height: Максимальная высота 400px
+user.edit.avatar.image_width: Максимальная ширина 400px
+user.edit.avatar.image_type: Только изображение jpeg, png
+
+user.post.import.image_size: Файл импорта не больше 1Mb
+user.post.import.import_type: Файл импорта csv
+
+post.edit.image_size: Размер картинки не больше 4Mb
+post.edit.image_height: Максимальная высота 400px
+post.edit.image_width: Максимальная ширина 400px
+post.edit.image_type: Только изображение jpeg, png
+
+post.edit.tags_message: Вы ввели некоректные теги

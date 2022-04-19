@@ -1,0 +1,9 @@
+parameters:
+#    public_images: '%kernel.project_dir%/public/avatar/'
+    public_avatar: 'avatar/'
+    public_post_image: 'public/post/image/'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true

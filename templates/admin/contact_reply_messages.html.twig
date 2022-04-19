@@ -1,0 +1,28 @@
+{# templates/admin/business_stats/index.html.twig #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'admin_title_reply_message'|trans %}
+{% block page_content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('admin_dashboard') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+            </div>
+        </div>
+
+        {{ form_start(form)}}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(form) }}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.message) }}
+                {{ form_errors(form.message) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

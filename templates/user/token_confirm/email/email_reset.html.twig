@@ -1,0 +1,9 @@
+<h2>Email change, follow the link:</h2>
+
+<p>
+    The new email will be: <b>{{ newEmail }}</b>
+</p>
+
+<p>
+    <a href="{{ absolute_url(path('user_token_confirm_user_email_reset_confirm', { 'token': token })) }}">{{ absolute_url(path('user_token_confirm_user_email_reset_confirm', { 'token': token })) }}</a>
+</p>

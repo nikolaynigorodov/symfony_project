@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'contact_create_title'|trans }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('post_post_all_show') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+            </div>
+        </div>
+
+        {{ form_start(contact_create)}}
+        <div class="my-custom-class-for-errors">
+            {{ form_errors(contact_create) }}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(contact_create.email) }}
+                {{ form_errors(contact_create.email) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(contact_create.name) }}
+                {{ form_errors(contact_create.name) }}
+            </div>
+            <div class="col-md-12">
+                {{ form_row(contact_create.message) }}
+                {{ form_errors(contact_create.message) }}
+            </div>
+        </div>
+
+        {{ form_end(contact_create) }}
+    </div>
+{% endblock %}

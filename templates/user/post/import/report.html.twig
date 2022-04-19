@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'import_report_title'|trans }}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col mt-4 mb-4">
+                <a href="{{ path('user_post_post_import_view_report') }}" class="btn btn-primary btn-lg square" role="button">{{ 'return_main_page'|trans }}</a>
+            </div>
+        </div>
+        <h2 class="text-center">{{ 'import_report_title'|trans }}</h2>
+        <div class="row">
+            <b>
+                <span>All Import Posts: {{ import.getCountPostsAll() }}</span>, <span>Imported Posts: {{ import.getCountPostsTrue() }}</span>
+            </b>
+        </div>
+    {% if reports|length > 0 %}
+        <div class="row col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Row in file</th>
+                    <th scope="col">Property</th>
+                    <th scope="col">Message</th>
+                </tr>
+                </thead>
+                <tbody>
+            {% for report in reports %}
+                <tr>
+                    <td>{{ report.getRowFile() }}</td>
+                    <td>{{ report.getProperty() }}</td>
+                    <td>{{ report.getMessage() }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center"><b>{{ 'import_report_without_errors'|trans }}</b></p>
+    {% endif %}
+
+    </div>
+{% endblock %}

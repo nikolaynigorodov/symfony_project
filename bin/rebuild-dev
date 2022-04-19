@@ -1,0 +1,78 @@
+#!/bin/sh
+
+set -eu
+. "$(dirname $0)/.shrc"
+
+unsafe_bin
+
+APP_ENV="${APP_ENV:-}"
+db=""
+assets=""
+all=""
+force=""
+
+if [ -z "$@" ]; then
+    all="y"
+else
+    for arg in "$@"; do
+        case "$arg" in
+            db|d)
+                db="y"
+            ;;
+
+            assets|a)
+                assets="y"
+            ;;
+
+            force|f)
+                force="y"
+            ;;
+
+            *)
+                echo "Usage: $0 (db|d|assets|a)*" >&2
+                exit 1
+            ;;
+        esac
+    done
+fi
+
+write_title "Installing vendors"
+
+if [ -n "$force" -o ! -e "$VENDOR_DIR" -o "$VENDOR_DIR" -ot "$BASE_DIR/composer.json" -o "$VENDOR_DIR" -ot "$BASE_DIR/composer.lock" ]; then
+    exec_composer install --no-interaction
+    touch "$VENDOR_DIR"
+else
+    write_line "Nothing to install"
+fi
+
+if [ -n "$all" -o -n "$db" ]; then
+    write_title "Clearing cache"
+    exec_bin clear-cache
+    write_title "Warming up cache"
+    exec_console cache:warmup
+
+    set +e
+    write_title "Dropping databases"
+    exec_console doctrine:database:drop --force --quiet
+    set -e
+
+    write_title "Creating databases"
+    exec_console doctrine:database:create
+
+    write_title "Updating database schema"
+    exec_console doctrine:schema:update --force
+
+    write_title "Sync metadata storage"
+    exec_console doctrine:migrations:sync-metadata-storage
+
+    write_title "Setting all migrations as migrated"
+    exec_console doctrine:migrations:version --add --all --no-interaction
+
+    write_title "Loading fixtures"
+    exec_console doctrine:fixtures:load --no-interaction
+fi
+
+if [ -n "$all" -o -n "$assets" ]; then
+    write_title "Installing assets"
+    exec_console assets:install --symlink
+fi

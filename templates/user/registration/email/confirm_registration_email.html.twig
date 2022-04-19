@@ -1,0 +1,5 @@
+<h2>Confirm Registration For Site!</h2>
+
+<p>
+    <a href="{{ absolute_url(path('user_token_confirm_user_registration_confirm', { 'token': token })) }}">{{ 'confirm_email_text_letter'|trans }}</a>
+</p>

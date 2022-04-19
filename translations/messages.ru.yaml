@@ -1,0 +1,141 @@
+welcome: Приветствуем
+show.all: Показать все
+
+menu.posts: Посты
+menu.post.create: Создать пост
+menu.profile: Кабинет
+menu.posts_my: Мои Посты
+menu.profile_edit: Редактировать Профиль
+menu.login: Войти
+menu.logout: Выйти
+menu.registration: Регистрация
+menu.categories_title: Каиегория
+menu.contact: Контакты
+menu.subscription_pay: Платная подписка
+subscription_title: Подписка на категории
+user.information.menu_edit_profile_title: Редактировать Профиль
+user.information.menu_change_email_title: Изменить електроную почту
+user.information.menu_export_post_title: Экспорт постов
+user.information.menu_import_post_title: Импорт постов
+user.information.menu_import_post_reports_title: Отчет об импорте постов
+user.information.menu_subscribe_title: Подпишитесь на категории
+user.information.menu_delete_subscribe_title: Отпесаться от категорий
+
+post_title: Пост
+posts_title: Посты
+admin_title_reply_message: Ответ на сообщение
+post_create: Создать пост
+posts_search: Поиск по постам
+posts.not_found: Нет постов
+post_edit: Редактировать Пост
+post_delete_title: Удалить Пост
+post.delete_button: Удалить
+import_report_title: Отчет об импорте
+posts_title_import_view_report: Все отчеты об импорте
+
+profile_edit_title: Редактирование Профиля
+
+contact_create_title: Контакты
+
+user_information.subscription_type_paid: Оплаченно
+user_information.subscription_type_free: Свободный
+user_information.subscription_status_active: Действительная
+user_information.subscription_status_schedule_cancel: Отменненая
+
+registration_title: Регистрация на сайте
+registered.success: Вы успешно зарегистрировались на сайте. Войдите в свой почтовый ящик, чтобы подтвердить регистрацию.
+post.create.success: Пост был успешно добавлен!!!
+post.create.need_subscription_pay: Чтобы иметь возможность создавать посты, нужна подписка!!!
+post.update.success: Пост успешно обновлен!
+post.delete_success: Пост успешно удален!
+post.search.messages: По вашему запросу найденно count результатов
+search_post_not_found: Поиск не дал результатов
+profile.update.success: Профиль был успешно обновлен
+subscribe.save.success: Вы успешно подписанны на посты
+subscribe.delete.success: Вы успешно оптисались
+contact.create.success: Вы успешно отправили сообщение. Мы с Вам ответим.
+admin.reply_message_success: Вы успешно ответили на письмо!
+post.create_comment_message: Ваш комментарий находиться на проверке.
+confirm.registered.message_success: Войдите в свой аккаунт.
+confirm.password_reset.message_success: Вы успешно изменили пароль, войдите в аккаунт.
+confirm.email_reset.message_success: Вы успешно изменили Email, войдите в аккаунт.
+confirm.password_reset.message_error: Не удалось обновить пароль!!!
+confirm.email_reset.message_error: Не удалось обновить Email!!!
+confirm.user.posts.export: Вам на почту отправленно письмо из ссылкой к файлу експорта.
+confirm.user.posts.import: Вам на почту отправленно письмо из ссылкой к файлу импорта.
+posts_import_view_report_no_reports: Нет отчетов об импорте.
+import_report_without_errors: Импорт прошел без ошибок.
+
+user_password_reset_message_success: Вам на почту отправлено письмо, перейдите по ссылке чтобы изменить пароль.
+user_email_reset_message_success: Вам на почту отправлено письмо, перейдите по ссылке чтобы изменить Email.
+
+contact.create.spam.message_error: Это спам !!!
+user_checker.message: Ваша учетная запись пользователя больше не существует.
+post.import.photo_message_error: Невозможно скопировать картинку по URL, проверте путь к картинке.
+
+return_main_page: На главную страницу
+post_show_more: Показать больше...
+post_show_title_add_like: Поставить лайк
+post_show_title_delete_like: Удалить лайк
+
+form.delete: Удалить
+form.registration.first_name: Имя
+form.registration.last_name: Фамилия
+form.registration.email: Адресс електроной почты
+form.registration.password: Пароль
+form.registration.repeat_password: Повторить пароль
+form.registration.submit_registration: Зарегистрироваться
+form.create_post.title: Название
+form.create_post.status: Статус
+form.create_post.summary: Резюме
+form.create_post.content: Контент
+form.create_post.tags: Теги
+form.create_post.create: Сохранить
+form.create_post.draft: Сохранить в Черновик
+form.create_post.archive: Сохранить в Архив
+form.edit.update: Обновить
+form.edit.profile.first_name: Имя
+form.edit.profile.last_name: Фамилия
+form.edit.profile.submit_update: Обновить профиль
+form.delete_yes: Да
+form.delete_no: Нет
+form.search.placeholder: Искать слово / фразу в заголовке и резюме
+form.search.button: Поиск
+form.search_post_status.status_title: Статусы для постов
+form.search_post_status.submit_name: Поиск
+
+form.admin.reply_contact.email: Email
+form.admin.reply_contact.message: Текст сообщения
+form.admin.reply_contact.submit: Отправить
+
+form,comment.create.message_text: Комментарий
+form,comment.create.button: Добавить комментарий
+
+form.contact.name: Имя
+form.contact.email: Email
+form.contact.message: Текст
+form.contact.submit: Отправить
+
+form.create.subscription_category: Категории
+form.create.subscription_button: Подписатся на категории
+form.user_post_export.category: Категории
+form.user_post_export.status: Статус
+form.user_post_export.button: Експортировать
+form.user_post_import.status: Статус
+form.user_post_import.import_file_placeholder: Выберите файл для Импорта
+form.user_post_import.button: Импорт
+
+form.password.reset_email: Адресс електроной почты
+form.password.reset_send: Отправить
+
+post.edit.image.placeholder: Картинка для поста
+
+confirm_email_text_letter: Для подтверждения регистрации перейдите по ссылке.
+
+link_title_to_change_password: Изменить пароль
+
+stripe_title_start: Payment Stripe
+stripe_title_success: Успешная оплата по подписке
+stripe_title_cancel: Отмена оплаты
+
+admin.posts.crud.update_post_blocked: Статус поста обновлен на заблокируваный.

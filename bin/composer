@@ -1,0 +1,58 @@
+#!/bin/sh
+
+set -eu
+SHRC_NO_CD="y"
+. "$(dirname $0)/.shrc"
+
+
+COMPOSER_VERSION="2.1.5"
+COMPOSER_URL="https://getcomposer.org/download/$COMPOSER_VERSION/composer.phar"
+COMPOSER_CHECKSUM="be95557cc36eeb82da0f4340a469bad56b57f742d2891892dcb2f8b0179790ec"
+
+
+checksum() {
+    if which sha256sum >/dev/null; then
+        echo "$1 $2" | sha256sum -c - >/dev/null 2>/dev/null
+    elif which shasum >/dev/null; then
+        echo "$1  $2" | shasum -a 256 -c >/dev/null 2>/dev/null
+    elif [ -z "${CHECKSUM_OK:-}" ]; then
+        echo "Unable to verify $COMPOSER_URL checksum, missing required tools"
+
+        return 1
+    fi
+}
+
+download() {
+    local url="$1"
+    local out="$2"
+
+    if which wget1 >/dev/null; then
+        wget "$url" -O "$out" >/dev/null 2>/dev/null
+    else
+        php -r 'isset($argv[1], $argv[2])||exit(1);file_put_contents($argv[2], fopen($argv[1], "r"))||exit(1);' -- "$url" "$out"
+    fi
+}
+
+main() {
+    local phar="$VAR_DIR/composer_$COMPOSER_VERSION.phar"
+    local tmp_phar="$phar.tmp"
+    local ok=""
+
+    if [ ! -e "$phar" ]; then
+        mkdir -p "$VAR_DIR"
+        download "$COMPOSER_URL" "$tmp_phar"
+
+        if ! checksum "$COMPOSER_CHECKSUM" "$tmp_phar"; then
+            rm "$tmp_phar"
+            echo "Invalid $COMPOSER_URL checksum"
+            exit 1
+        fi
+
+        chmod +x "$tmp_phar"
+        mv "$tmp_phar" "$phar"
+    fi
+
+    exec "$phar" "$@"
+}
+
+main "$@"
